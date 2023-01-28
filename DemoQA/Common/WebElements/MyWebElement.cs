@@ -87,6 +87,8 @@ namespace DemoQA.Common.WebElements
             SendKeys(text);
         }
 
+        public void SwitchToFrame() => WebDriverFactory.Driver.SwitchTo().Frame(WebElement);
+
         public void Submit() => WebElement.Submit();
 
         public void ScrollIntoView() => WebDriverFactory.JavaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView()", WebElement);

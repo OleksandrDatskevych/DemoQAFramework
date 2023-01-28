@@ -17,8 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Drivers\" />
-    <Folder Include="PageObjects\AlertFrameWindows\" />
-    <Folder Include="Tests\AlertFrameWindows\" />
   </ItemGroup>
 
 </Project>
