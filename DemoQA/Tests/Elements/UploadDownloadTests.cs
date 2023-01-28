@@ -1,5 +1,5 @@
-﻿using DemoQA.PageObjects.Elements;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.Elements;
 
 namespace DemoQA.Tests.Elements
 {

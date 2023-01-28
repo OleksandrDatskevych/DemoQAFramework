@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
 
-namespace DemoQA.PageObjects.Elements
+namespace DemoQA.PageObjects.Forms
 {
-    public class ElementsPage : BasePage
+    public class FormsPage : BasePage
     {
         public void NavigateToSubcategory(string subcategoryName)
         {

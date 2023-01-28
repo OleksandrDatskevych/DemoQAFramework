@@ -34,6 +34,7 @@ namespace DemoQA.Common.Drivers
         private static void InitializeDriver()
         {
             ChromeOptions options = new();
+            options.AddExtension(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "extension_1_46_0_0.crx"));
             options.AddArgument("force-device-scale-factor=0.8");
             Driver = new ChromeDriver(options);
             Driver.Manage().Window.Maximize();

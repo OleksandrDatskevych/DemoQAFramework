@@ -1,6 +1,9 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
-using OpenQA.Selenium.Support.UI;
+using DemoQA.Common.Drivers;
+
+[assembly:Parallelizable(ParallelScope.Fixtures)]
+[assembly:LevelOfParallelism(4)]
 
 namespace DemoQA.Tests
 {
@@ -18,6 +21,7 @@ namespace DemoQA.Tests
         [SetUp]
         public void SetUp()
         {
+
         }
 
         [TearDown]

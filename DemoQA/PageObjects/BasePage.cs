@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
-using DemoQA.Common.WebElements;
 using OpenQA.Selenium.Support.UI;
+using DemoQA.Common.WebElements;
 using DemoQA.Common.Drivers;
 
 namespace DemoQA.PageObjects
@@ -11,7 +11,7 @@ namespace DemoQA.PageObjects
 
         public void NavigateToCategory(string categoryName)
         {
-            var categoryCardElement = new MyWebElement(By.XPath($"//div[@class='category-cards' and .//text()='{categoryName}']"));
+            var categoryCardElement = new MyWebElement(By.XPath($"//div[contains(@class, 'top-card') and .//text()='{categoryName}']"));
 
             categoryCardElement.Click();
         }

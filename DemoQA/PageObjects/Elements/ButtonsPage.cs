@@ -1,6 +1,5 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
 
 namespace DemoQA.PageObjects.Elements
 {

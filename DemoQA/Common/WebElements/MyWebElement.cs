@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Drawing;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using DemoQA.Common.Drivers;
 using DemoQA.Common.Extensions;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Interactions;
 
 namespace DemoQA.Common.WebElements
 {
@@ -43,6 +42,18 @@ namespace DemoQA.Common.WebElements
         public void DoubleClick() => WebDriverFactory.Actions.DoubleClick(WebElement).Perform();
 
         public void ContextClick() => WebDriverFactory.Actions.ContextClick(WebElement).Perform();
+
+        public bool IsDisplayed()
+        {
+            if (WebDriverFactory.Driver.FindElements(By).Count != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public IWebElement FindElement(By by) => WebElement.FindElement(by);
 
