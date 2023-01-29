@@ -43,6 +43,10 @@ namespace DemoQA.Common.WebElements
 
         public void ContextClick() => WebDriverFactory.Actions.ContextClick(WebElement).Perform();
 
+        public void HoverOverElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Pause(TimeSpan.FromMilliseconds(100)).Perform();
+
+        public void MoveToElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Perform();
+
         public bool IsDisplayed()
         {
             if (WebDriverFactory.Driver.FindElements(By).Count != 0)
