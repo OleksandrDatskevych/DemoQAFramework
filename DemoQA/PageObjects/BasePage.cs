@@ -7,7 +7,7 @@ namespace DemoQA.PageObjects
 {
     public class BasePage
     {
-        protected WebDriverWait wait = new(WebDriverFactory.Driver,TimeSpan.FromSeconds(5));
+        protected WebDriverWait wait = new(WebDriverFactory.Driver,TimeSpan.FromSeconds(10));
 
         public void NavigateToCategory(string categoryName)
         {

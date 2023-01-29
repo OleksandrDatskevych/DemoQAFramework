@@ -28,7 +28,7 @@ namespace DemoQA.PageObjects.Elements
 
         public bool PageInitialState()
         {
-            var result = _table.Displayed && _searchBox.Displayed && _addButton.Displayed;
+            var result = _table.IsDisplayed() && _searchBox.IsDisplayed() && _addButton.IsDisplayed();
 
             return result;
         }
@@ -37,7 +37,7 @@ namespace DemoQA.PageObjects.Elements
 
         public void ClickSubmitButton() => _submitButton.Click();
 
-        public bool IsRegistrationHeaderDisplayed() => _registrationFormHeader.Displayed;
+        public bool IsRegistrationHeaderDisplayed() => _registrationFormHeader.IsDisplayed();
 
         public bool IsRegistrationFormDisplayed()
         {
@@ -53,12 +53,12 @@ namespace DemoQA.PageObjects.Elements
 
         public bool RegistrationFormInitialState()
         {
-            var result = _firstNameTextBox.Displayed &&
-                _lastNameTextBox.Displayed &&
-                _emailTextBox.Displayed &&
-                _ageTextBox.Displayed &&
-                _salaryTextBox.Displayed &&
-                _departmentTextBox.Displayed;
+            var result = _firstNameTextBox.IsDisplayed() &&
+                _lastNameTextBox.IsDisplayed() &&
+                _emailTextBox.IsDisplayed() &&
+                _ageTextBox.IsDisplayed() &&
+                _salaryTextBox.IsDisplayed() &&
+                _departmentTextBox.IsDisplayed();
 
             return result;
         }

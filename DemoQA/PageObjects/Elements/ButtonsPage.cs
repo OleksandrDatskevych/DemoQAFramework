@@ -14,9 +14,9 @@ namespace DemoQA.PageObjects.Elements
 
         public bool InitialState()
         {
-            var result = _doubleClickButton.Displayed &&
-                _rightClickButton.Displayed &&
-                _clickMeButton.Displayed;
+            var result = _doubleClickButton.IsDisplayed() &&
+                _rightClickButton.IsDisplayed() &&
+                _clickMeButton.IsDisplayed();
 
             return result;
         }

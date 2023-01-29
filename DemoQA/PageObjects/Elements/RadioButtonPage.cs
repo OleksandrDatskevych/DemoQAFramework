@@ -12,9 +12,9 @@ namespace DemoQA.PageObjects.Elements
 
         public bool InitialState()
         {
-            var result = _yesRadio.Displayed &&
-                _impressiveRadio.Displayed &&
-                _noRadio.Displayed &&
+            var result = _yesRadio.IsDisplayed() &&
+                _impressiveRadio.IsDisplayed() &&
+                _noRadio.IsDisplayed() &&
                 !new MyWebElement(By.Id("noRadio")).Enabled;
 
             return result;

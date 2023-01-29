@@ -22,7 +22,6 @@ namespace DemoQA.Tests.Widgets
             page.DeleteInMultiValue(listOfColors[0]);
             Assert.AreNotEqual(listOfColors, page.ChoisesInMultiValue());
             page.SelectInSingleChoises(listOfColors[0]);
-            Thread.Sleep(1000);
             Assert.AreEqual(listOfColors[0], page.ChoiseInSingleValue());
             page.SelectInSingleChoises(listOfColors[1]);
             Assert.AreEqual(listOfColors[1], page.ChoiseInSingleValue());

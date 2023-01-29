@@ -2,9 +2,6 @@
 using NUnit.Framework;
 using DemoQA.Common.Drivers;
 
-[assembly:Parallelizable(ParallelScope.Fixtures)]
-[assembly:LevelOfParallelism(4)]
-
 namespace DemoQA.Tests
 {
     public class BaseTest
@@ -15,7 +12,7 @@ namespace DemoQA.Tests
         public void OneTimeSetUp()
         {
             WebDriverFactory.Driver.Navigate().GoToUrl("https://demoqa.com");
-            wait = new(WebDriverFactory.Driver, TimeSpan.FromSeconds(5));
+            wait = new(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
         }
 
         [SetUp]

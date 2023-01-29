@@ -25,11 +25,11 @@ namespace DemoQA.PageObjects.Elements
 
         public bool InitialState()
         {
-            var result = _fullNameTextBox.Displayed && 
-                _emailTextBox.Displayed && 
-                _curAddress.Displayed && 
-                _permAddress.Displayed && 
-                _submitButton.Displayed;
+            var result = _fullNameTextBox.IsDisplayed() && 
+                _emailTextBox.IsDisplayed() && 
+                _curAddress.IsDisplayed() && 
+                _permAddress.IsDisplayed() && 
+                _submitButton.IsDisplayed();
 
             return result;
         }

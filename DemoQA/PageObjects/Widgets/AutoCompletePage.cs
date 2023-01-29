@@ -14,7 +14,7 @@ namespace DemoQA.PageObjects.Widgets
         private IReadOnlyList<IWebElement> ChoisesInMulti => WebDriverFactory.Driver
             .FindElements(By.XPath("//*[@id='autoCompleteMultipleContainer']/descendant::*[contains(@class, 'auto-complete__multi-value__label')]"));
 
-        public bool InitialState() => _multipleNamesTextBox.Displayed && _singleNamesTextBox.Displayed;
+        public bool InitialState() => _multipleNamesTextBox.IsDisplayed() && _singleNamesTextBox.IsDisplayed();
 
         public void SelectInMultipleChoises(string text)
         {
