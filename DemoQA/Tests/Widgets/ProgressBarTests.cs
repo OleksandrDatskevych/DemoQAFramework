@@ -3,7 +3,7 @@ using DemoQA.PageObjects.Widgets;
 
 namespace DemoQA.Tests.Widgets
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class ProgressBarTests : BaseTest
     {
         [Test]

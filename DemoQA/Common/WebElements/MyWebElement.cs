@@ -47,6 +47,10 @@ namespace DemoQA.Common.WebElements
 
         public void MoveToElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Perform();
 
+        public void DragToElement(MyWebElement target) => WebDriverFactory.Actions.DragAndDrop(WebElement, target.WebElement).Perform();
+
+        public void DragAndDropToOffset(int x, int y) => WebDriverFactory.Actions.DragAndDropToOffset(WebElement, x, y).Perform();
+
         public bool IsDisplayed()
         {
             if (WebDriverFactory.Driver.FindElements(By).Count != 0)

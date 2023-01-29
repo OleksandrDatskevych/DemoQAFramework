@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace DemoQA.Tests.Widgets
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class MenuTests : BaseTest
     {
         [Test]
