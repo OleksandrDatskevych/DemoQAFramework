@@ -1,5 +1,5 @@
-﻿using DemoQA.PageObjects.Widgets;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.Widgets;
 
 namespace DemoQA.Tests.Widgets
 {

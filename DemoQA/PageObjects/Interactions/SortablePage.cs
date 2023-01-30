@@ -1,7 +1,7 @@
-﻿using DemoQA.Common.Drivers;
-using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using DemoQA.Common.Drivers;
+using DemoQA.Common.WebElements;
 
 namespace DemoQA.PageObjects.Interactions
 {
@@ -54,16 +54,6 @@ namespace DemoQA.PageObjects.Interactions
             return isDefault;
         }
 
-        public List<string> List()
-        {
-            var list = new List<string>();
-            foreach (var item in GridOfItems)
-            {
-                list.Add(item.Text);
-            }
-            return list;
-        }
-
         public void DragInList(string draggable, string target)
         {
             var element = ListOfItems.Where(i => i.Text == draggable).FirstOrDefault();
@@ -77,8 +67,6 @@ namespace DemoQA.PageObjects.Interactions
             var targetElement = GridOfItems.Where(i => i.Text == target).FirstOrDefault();
             new Actions(WebDriverFactory.Driver).DragAndDrop(element, targetElement).Perform();
         }
-
-        public void RefreshPage() => WebDriverFactory.Driver.Navigate().Refresh();
 
         public void ClickListTab() => _listTab.Click();
 

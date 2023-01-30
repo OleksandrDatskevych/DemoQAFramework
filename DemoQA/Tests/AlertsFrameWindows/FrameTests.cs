@@ -1,5 +1,5 @@
-﻿using DemoQA.PageObjects.AlertsFrameWindows;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.AlertsFrameWindows;
 
 namespace DemoQA.Tests.AlertsFrameWindows
 {

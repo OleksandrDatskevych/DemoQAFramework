@@ -30,7 +30,10 @@ namespace DemoQA.Common.WebElements
         public void Click()
         {
             WebDriverFactory.Driver
-                .GetWebDriverWait(30, TimeSpan.FromMilliseconds(500), typeof(ElementClickInterceptedException), typeof(NoSuchElementException), typeof(ElementNotInteractableException))
+                .GetWebDriverWait(30, TimeSpan.FromMilliseconds(500), 
+                typeof(ElementClickInterceptedException), 
+                typeof(NoSuchElementException), 
+                typeof(ElementNotInteractableException))
                 .Until(_ =>
                 {
                     WebElement.Click();
@@ -47,7 +50,17 @@ namespace DemoQA.Common.WebElements
 
         public void MoveToElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Perform();
 
-        public void DragToElement(MyWebElement target) => WebDriverFactory.Actions.DragAndDrop(WebElement, target.WebElement).Perform();
+        public void MoveByOffset(int x, int y) => WebDriverFactory.Actions.MoveByOffset(x, y).Perform();
+
+        public void DragToElement(MyWebElement element) => WebDriverFactory.Actions.ClickAndHold(WebElement)
+            .MoveToElement(element.WebElement).Perform();
+
+        public void DragToElementByOffset(MyWebElement element, int x, int y) => WebDriverFactory.Actions.ClickAndHold(WebElement)
+            .MoveToElement(element.WebElement).MoveByOffset(x, y).Perform();
+
+        public void ReleaseElement() => WebDriverFactory.Actions.Release().Perform();
+
+        public void DragAndDropToElement(MyWebElement target) => WebDriverFactory.Actions.DragAndDrop(WebElement, target.WebElement).Perform();
 
         public void DragAndDropToOffset(int x, int y) => WebDriverFactory.Actions.DragAndDropToOffset(WebElement, x, y).Perform();
 

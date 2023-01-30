@@ -29,5 +29,7 @@ namespace DemoQA.PageObjects
                 groupHeader.Click();
             }
         }
+
+        public void RefreshPage() => WebDriverFactory.Driver.Navigate().Refresh();
     }
 }

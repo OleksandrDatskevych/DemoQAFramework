@@ -1,5 +1,5 @@
-﻿using DemoQA.PageObjects.Interactions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.Interactions;
 
 namespace DemoQA.Tests.Interactions
 {

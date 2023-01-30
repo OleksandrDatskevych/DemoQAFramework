@@ -1,7 +1,6 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace DemoQA.PageObjects.Widgets
 {

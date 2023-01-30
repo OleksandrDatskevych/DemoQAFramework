@@ -1,6 +1,6 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
 
 namespace DemoQA.PageObjects.Widgets
 {
@@ -41,7 +41,6 @@ namespace DemoQA.PageObjects.Widgets
 
         public void SelectInOldStyleMenu(string option)
         {
-            //_oldStyleDropdown.Click();
             var element = wait.Until(drv => drv.FindElement(By.XPath($"//option[text()='{option}']")));
             element.Click();
         }
