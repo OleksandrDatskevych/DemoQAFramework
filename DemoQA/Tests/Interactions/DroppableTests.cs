@@ -8,7 +8,7 @@ namespace DemoQA.Tests.Interactions
     public class DroppableTests : BaseTest
     {
         [SetUp]
-        public new void SetUp()
+        public void SetUp()
         {
             WebDriverFactory.Driver.Navigate().GoToUrl("https://demoqa.com");
             wait = new(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));

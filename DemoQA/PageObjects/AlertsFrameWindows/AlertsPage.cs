@@ -12,7 +12,7 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
         private MyWebElement _promptButton = new(By.Id("promtButton"));
         private MyWebElement _confirmResult = new(By.Id("confirmResult"));
         private MyWebElement _promptResult = new(By.Id("promptResult"));
-        private IAlert _alert;
+        private IAlert? _alert;
 
         public void ClickAlertButton() => _alertButton.Click();
 

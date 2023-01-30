@@ -15,18 +15,6 @@ namespace DemoQA.Tests
             wait = new(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
         }
 
-        [SetUp]
-        public void SetUp()
-        {
-
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-
-        }
-
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
