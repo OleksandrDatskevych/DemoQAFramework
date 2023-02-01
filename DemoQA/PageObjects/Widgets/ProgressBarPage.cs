@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Widgets
 {
@@ -23,7 +24,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public void WaitUntilProgressBarValue(int value)
         {
-            wait.Until(_ => GetProgressBarValue() == value);
+            Driver.GetWebDriverWait().Until(_ => GetProgressBarValue() == value);
         }
 
         public bool IsRunning()
@@ -31,7 +32,7 @@ namespace DemoQA.PageObjects.Widgets
             var startValue = GetProgressBarValue();
             Thread.Sleep(100); // ???
             var finalValue = GetProgressBarValue();
-            var running = startValue < finalValue;
+            var running = finalValue > startValue;
 
             return running;
         }

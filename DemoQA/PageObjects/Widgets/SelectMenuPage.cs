@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Widgets
 {
@@ -28,7 +29,7 @@ namespace DemoQA.PageObjects.Widgets
         public void SelectInSelectValue(string group, string option)
         {
             _selectValueDropdown.SendKeys(option);
-            var elements = wait.Until(drv => drv.FindElements(By.XPath("//*[contains(@class, 'option')]")));
+            var elements = Driver.GetWebDriverWait().Until(drv => drv.FindElements(By.XPath("//*[contains(@class, 'option')]")));
 
             if (elements.All(i => i.Text.Contains(option)))
             {
@@ -41,7 +42,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public void SelectInOldStyleMenu(string option)
         {
-            var element = wait.Until(drv => drv.FindElement(By.XPath($"//option[text()='{option}']")));
+            var element = Driver.GetWebDriverWait().Until(drv => drv.FindElement(By.XPath($"//option[text()='{option}']")));
             element.Click();
         }
 
@@ -59,9 +60,10 @@ namespace DemoQA.PageObjects.Widgets
 
             do
             {
-                var option = wait.Until(_ => new MyWebElement(By.XPath("(//div[contains(@class, 'container')])[5]//following::*[contains(@class, 'option')]")));
+                var option = Driver.GetWebDriverWait().Until(_ => new MyWebElement(By.XPath("(//div[contains(@class, 'container')])[5]//following::*[contains(@class, 'option')]")));
                 option.Click();
-            } while (!new MyWebElement(By.XPath("//*[contains(@class, 'menu')]//*[text()='No options']")).IsDisplayed());
+            } 
+            while (!new MyWebElement(By.XPath("//*[contains(@class, 'menu')]//*[text()='No options']")).IsDisplayed());
         }
 
         public List<string> GetValuesInMultiSelect()
@@ -83,7 +85,7 @@ namespace DemoQA.PageObjects.Widgets
         public void RemoveAllInMultiValue()
         {
             _removeAllMultiSelect.Click();
-            wait.Until(_ => GetValuesInMultiSelect().Count == 0);
+            Driver.GetWebDriverWait().Until(_ => GetValuesInMultiSelect().Count == 0);
         }
     }
 }

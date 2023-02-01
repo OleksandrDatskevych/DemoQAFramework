@@ -22,7 +22,8 @@ namespace DemoQA.PageObjects.Widgets
                 {
                     _sliderInput.SendKeys(Keys.ArrowLeft);
                 }
-            } while (int.Parse(_sliderInput.GetAttribute("value")) != value);
+            }
+            while (int.Parse(_sliderInput.GetAttribute("value")) != value);
         }
 
         public int SliderValue() => int.Parse(_sliderInput.GetAttribute("value"));

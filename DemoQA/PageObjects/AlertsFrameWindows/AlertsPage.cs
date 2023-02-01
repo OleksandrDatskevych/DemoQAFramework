@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.AlertsFrameWindows
 {
@@ -42,28 +43,28 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
 
         public void AcceptAlert()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.Accept();
         }
 
         public void CancelAlert()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.Dismiss();
         }
 
         public void SendKeysToAlert(string text)
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.SendKeys(text);
         }
 
         public string GetAlertText()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
 
             return _alert.Text;

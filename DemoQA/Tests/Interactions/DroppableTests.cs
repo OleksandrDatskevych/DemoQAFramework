@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using DemoQA.Common.Drivers;
 using DemoQA.PageObjects.Interactions;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.Tests.Interactions
 {
@@ -11,7 +12,6 @@ namespace DemoQA.Tests.Interactions
         public void SetUp()
         {
             WebDriverFactory.Driver.Navigate().GoToUrl("https://demoqa.com");
-            wait = new(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
         }
 
         [Test]

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.AlertsFrameWindows
 {
@@ -34,7 +35,7 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
 
         public void SwitchToSecondWindow()
         {
-            wait.Until(d => d.WindowHandles.Count == 2);
+            Driver.GetWebDriverWait().Until(d => d.WindowHandles.Count == 2);
 
             foreach(var window in WebDriverFactory.Driver.WindowHandles)
             {
@@ -45,14 +46,14 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
                 }
             }
 
-            wait.Until(_ => _newWindowTitle.IsDisplayed());
+            Driver.GetWebDriverWait().Until(_ => _newWindowTitle.IsDisplayed());
         }
 
         public string GetTextFromSecondWindow() => _newWindowTitle.Text;
 
         public void CloseSecondWindow()
         {
-            if(WebDriverFactory.Driver.CurrentWindowHandle != _parentWindow)
+            if (WebDriverFactory.Driver.CurrentWindowHandle != _parentWindow)
             {
                 WebDriverFactory.Driver.Close();
             }

@@ -12,12 +12,26 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
 
         public bool InitialState() => _firstFrame.Displayed && _secondFrame.Displayed;
 
-        public void SwitchToFirstFrame() => _firstFrame.SwitchToFrame();
-
-        public void SwitchToSecondFrame() => _secondFrame.SwitchToFrame();
+        public void SwitchToFrame(string locator = "iframe#frame1") => new MyWebElement(By.CssSelector(locator)).SwitchToFrame();
 
         public void SwitchToParent() => WebDriverFactory.Driver.SwitchTo().DefaultContent();
 
-        public string GetHeadingInFrame() => _frameHeading.Text;
+        public string GetHeadingInFrame() => ExecuteWithinFrame(() => _frameHeading.Text);
+
+        public void ExecuteWithinFrame(Action action)
+        {
+            SwitchToFrame();
+            action.Invoke();
+            SwitchToParent();
+        }
+
+        public T ExecuteWithinFrame<T>(Func<T> func)
+        {
+            SwitchToFrame();
+            var result = func.Invoke();
+            SwitchToParent();
+
+            return result;
+        }
     }
 }

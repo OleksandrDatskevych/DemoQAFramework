@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using DemoQA.PageObjects.Forms;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.Tests.Forms
 {
@@ -58,7 +59,7 @@ namespace DemoQA.Tests.Forms
             };
             Assert.True(page.InitialState(emailPlaceholder));
             page.ClickSubmitButton();
-            wait.Until(_ => page.FirstNameBorderColor() == redColor);
+            Driver.GetWebDriverWait().Until(_ => page.FirstNameBorderColor() == redColor);
             Assert.AreEqual(redColor, page.FirstNameBorderColor());
             Assert.AreEqual(redColor, page.LastNameBorderColor());
             Assert.AreEqual(redColor, page.GenderBorderColor());
@@ -68,13 +69,13 @@ namespace DemoQA.Tests.Forms
             Assert.AreEqual(greenColor, page.AdressBorderColor());
             Assert.AreEqual(greenColor, page.HobbiesBorderColor());
             page.EnterPhone(validPhone);
-            wait.Until(_ => page.PhoneBorderColor() == greenColor);
+            Driver.GetWebDriverWait().Until(_ => page.PhoneBorderColor() == greenColor);
             Assert.AreEqual(greenColor, page.PhoneBorderColor());
             page.EnterPhone(invalidPhone);
-            wait.Until(_ => page.PhoneBorderColor() == redColor);
+            Driver.GetWebDriverWait().Until(_ => page.PhoneBorderColor() == redColor);
             Assert.AreEqual(redColor, page.PhoneBorderColor());
             page.EnterPhone(semiValidPhone);
-            wait.Until(_ => page.PhoneBorderColor() == greenColor);
+            Driver.GetWebDriverWait().Until(_ => page.PhoneBorderColor() == greenColor);
             Assert.AreEqual(greenColor, page.PhoneBorderColor());
             Assert.AreEqual(validPhone, page.PhoneValue());
             page.ClickDateOfBirth();
@@ -92,7 +93,7 @@ namespace DemoQA.Tests.Forms
             page.EnterAddress(address);
             page.SelectStateAndCity(state, city);
             page.ClickSubmitButton();
-            wait.Until(_ => page.IsModalDisplayed());
+            Driver.GetWebDriverWait().Until(_ => page.IsModalDisplayed());
             Assert.AreEqual(listOfUserInfo, page.GetListOfInfoFromModal());
         }
     }

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
 using DemoQA.Common.Drivers;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Forms
 {
@@ -137,7 +138,7 @@ namespace DemoQA.PageObjects.Forms
         {
             var subjectField = new MyWebElement(By.Id("subjectsInput"));
             subjectField.SendKeys(subject[0].ToString());
-            wait.Until(_ => DropdownMenuList.Count != 0);
+            Driver.GetWebDriverWait().Until(_ => DropdownMenuList.Count != 0);
             var element = DropdownMenuList.Where(i => i.Text == subject).ToList()[0];
 
             return element;

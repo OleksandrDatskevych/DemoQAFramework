@@ -6,8 +6,8 @@ namespace DemoQA.PageObjects.Widgets
 {
     public class AutoCompletePage : WidgetsPage
     {
-        private MyWebElement _multipleNamesTextBox = new(By.XPath("//span[text()='Type multiple color names']/following::input[1]"));
-        private MyWebElement _singleNamesTextBox = new(By.XPath("//span[text()='Type single color name']/following::input[1]"));
+        private MyWebElement _multipleNamesTextBox = new(By.XPath("//*[@id='autoCompleteMultipleContainer']//input"));
+        private MyWebElement _singleNamesTextBox = new(By.XPath("//*[@id='autoCompleteSingleContainer']//input"));
         private MyWebElement _choiseInSingle = new(By.XPath("//*[@id='autoCompleteSingleContainer']" +
             "/descendant::*[contains(@class, 'auto-complete__single-value')]"));
 

@@ -9,8 +9,8 @@ namespace DemoQA.Common.WebElements
 {
     public class MyWebElement : IWebElement
     {
-        public WebDriverWait? wait;
         protected By By { get; set; }
+        public By Selector { get; set; }
         protected IWebElement WebElement => WebDriverFactory.Driver.GetWebElementWhenExist(By);
         public string TagName => WebElement.TagName;
         public string Text => WebElement.Text;
@@ -23,6 +23,7 @@ namespace DemoQA.Common.WebElements
         public MyWebElement(By by)
         {
             By = by;
+            Selector = by;
         }
 
         public void Clear() => WebElement.Clear();

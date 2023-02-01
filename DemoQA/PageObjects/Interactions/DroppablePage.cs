@@ -47,7 +47,6 @@ namespace DemoQA.PageObjects.Interactions
             return result;
         }
 
-
         public bool PreventPropagationInitialState()
         {
             var result = _draggableBoxPreventProp.IsDisplayed() &&
