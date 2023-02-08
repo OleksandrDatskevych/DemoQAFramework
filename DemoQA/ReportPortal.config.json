@@ -1,0 +1,17 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/reportportal/agent-net-nunit/master/src/ReportPortal.NUnitExtension/ReportPortal.config.schema",
+  "enabled": false,
+  "server": {
+    "url": "http://localhost:80/api/v1",
+    "project": "demoqa",
+    "authentication": {
+      "uuid": "b8502ec0-411f-4eeb-a434-d894d8b67b34"
+    }
+  },
+  "launch": {
+    "name": "DemoQA Launch",
+    "description": "DemoQA Tests",
+    "debugMode": false,
+    "attributes": [ "platform:x64" ]
+  }
+}

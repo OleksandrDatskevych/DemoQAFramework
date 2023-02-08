@@ -1,0 +1,22 @@
+﻿pipeline {
+    agent {
+        label 'agent2'
+    }
+    stages {
+        stage('Restore') {
+            steps {
+                bat 'dotnet restore'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'dotnet build'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'dotnet test'
+            }
+        }
+    }
+}

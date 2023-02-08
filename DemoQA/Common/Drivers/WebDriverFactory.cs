@@ -34,10 +34,14 @@ namespace DemoQA.Common.Drivers
         private static void InitializeDriver()
         {
             ChromeOptions options = new();
-            options.AddExtension(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "extension_1_46_0_0.crx"));
-            options.AddArgument("force-device-scale-factor=0.8");
+            // options.AddExtension(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "extension_1_46_0_0.crx"));
+            options.AddArguments("force-device-scale-factor=0.8");
+            options.AddArgument("--headless");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--window-size=1920x1080");
             Driver = new ChromeDriver(options);
-            Driver.Manage().Window.Maximize();
+            // Driver.Manage().Window.Maximize();
         }
     }
 }

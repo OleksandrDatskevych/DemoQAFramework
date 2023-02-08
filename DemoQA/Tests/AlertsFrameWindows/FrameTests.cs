@@ -16,7 +16,7 @@ namespace DemoQA.Tests.AlertsFrameWindows
             Assert.True(page.InitialState());
             page.SwitchToFrame();
             Assert.AreEqual("This is a sample page", page.GetHeadingInFrame());
-            page.SwitchToFrame("iframe#frame2");
+            page.SwitchToFrame("//iframe[@id='frame2']");
             Assert.AreEqual("This is a sample page", page.GetHeadingInFrame());
         }
     }
