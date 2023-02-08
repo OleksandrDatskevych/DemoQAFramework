@@ -5,17 +5,17 @@
     stages {
         stage('Restore') {
             steps {
-                bat 'dotnet restore'
+                sh 'dotnet restore'
             }
         }
         stage('Build') {
             steps {
-                bat 'dotnet build'
+                sh 'dotnet build'
             }
         }
         stage('Test') {
             steps {
-                bat 'dotnet test'
+                sh 'dotnet test'
             }
         }
     }
