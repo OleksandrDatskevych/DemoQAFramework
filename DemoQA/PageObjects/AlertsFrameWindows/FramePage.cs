@@ -12,7 +12,7 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
 
         public bool InitialState() => _firstFrame.Displayed && _secondFrame.Displayed;
 
-        public void SwitchToFrame(string locator = "//iframe[@id='frame1']") => new MyWebElement(By.XPath(locator)).SwitchToFrame();
+        public void SwitchToFrame(string locator = "iframe#frame1") => new MyWebElement(By.CssSelector(locator)).SwitchToFrame();
 
         public void SwitchToParent() => WebDriverFactory.Driver.SwitchTo().DefaultContent();
 
