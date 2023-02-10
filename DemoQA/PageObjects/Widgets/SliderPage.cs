@@ -1,5 +1,5 @@
-﻿using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.WebElements;
 
 namespace DemoQA.PageObjects.Widgets
 {
@@ -22,7 +22,8 @@ namespace DemoQA.PageObjects.Widgets
                 {
                     _sliderInput.SendKeys(Keys.ArrowLeft);
                 }
-            } while (int.Parse(_sliderInput.GetAttribute("value")) != value);
+            }
+            while (int.Parse(_sliderInput.GetAttribute("value")) != value);
         }
 
         public int SliderValue() => int.Parse(_sliderInput.GetAttribute("value"));

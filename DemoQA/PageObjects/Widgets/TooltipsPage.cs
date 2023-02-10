@@ -1,6 +1,7 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Widgets
 {
@@ -21,7 +22,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public string GetButtonTooltipText()
         {
-            var tooltip = wait.Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='buttonToolTip']]")));
+            var tooltip = Driver.GetWebDriverWait().Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='buttonToolTip']]")));
             var text = tooltip.Text;
 
             return text;
@@ -29,7 +30,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public string GetTextBoxTooltipText()
         {
-            var tooltip = wait.Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='textFieldToolTip']]")));
+            var tooltip = Driver.GetWebDriverWait().Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='textFieldToolTip']]")));
             var text = tooltip.Text;
 
             return text;
@@ -37,7 +38,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public string GetContraryTooltipText()
         {
-            var tooltip = wait.Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='contraryTexToolTip']]")));
+            var tooltip = Driver.GetWebDriverWait().Until(_ => WebDriverFactory.Driver.FindElement(By.XPath("//*[@class='tooltip-inner' and ./ancestor::*[@id='contraryTexToolTip']]")));
             var text = tooltip.Text;
 
             return text;

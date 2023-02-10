@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
 using DemoQA.Common.Drivers;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Forms
 {
@@ -14,8 +15,9 @@ namespace DemoQA.PageObjects.Forms
         private MyWebElement _lastNameTextBox = new(By.Id("lastName"));
         private MyWebElement _phoneNumberTextBox = new(By.Id("userNumber"));
         private MyWebElement _datePicker = new(By.ClassName("react-datepicker__month-container"));
-        private MyWebElement _datePickerTomorrow = new(By.XPath($"//div[contains(@class, 'react-datepicker__day') and text()='{DateTime.Now:dd}']" +
-            $"/following::*[contains(@class, 'react-datepicker__day')][1]"));
+        private MyWebElement _datePickerTomorrow = new(By.XPath("//div[contains(@class, 'react-datepicker__day') " +
+                                                                $"and text()='{DateTime.Now.ToString("dd").Replace("0","")}']" +
+                                                                "/following::*[contains(@class, 'react-datepicker__day')][1]"));
         private MyWebElement _curAddressTextBox = new(By.Id("currentAddress"));
         private MyWebElement _selectStateDropdown = new(By.XPath("//*[text()='Select State']"));
         private MyWebElement _selectCityDropdown = new(By.XPath("//*[text()='Select City']"));
@@ -137,7 +139,7 @@ namespace DemoQA.PageObjects.Forms
         {
             var subjectField = new MyWebElement(By.Id("subjectsInput"));
             subjectField.SendKeys(subject[0].ToString());
-            wait.Until(_ => DropdownMenuList.Count != 0);
+            Driver.GetWebDriverWait().Until(_ => DropdownMenuList.Count != 0);
             var element = DropdownMenuList.Where(i => i.Text == subject).ToList()[0];
 
             return element;

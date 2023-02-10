@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using DemoQA.PageObjects.Elements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.Tests.Elements
 {
@@ -23,13 +24,13 @@ namespace DemoQA.Tests.Elements
             Assert.AreEqual($"Name:{fullName}", textBoxPage.GetNameResultText());
             textBoxPage.EnterEmail(invalidEmail);
             textBoxPage.ClickSubmitButton();
-            wait.Until(_ => textBoxPage.EmailBorderColor() == redColorBorder);
+            Driver.GetWebDriverWait().Until(_ => textBoxPage.EmailBorderColor() == redColorBorder);
             Assert.AreEqual(redColorBorder, textBoxPage.EmailBorderColor());
             Assert.AreEqual($"Name:{fullName}", textBoxPage.GetNameResultText());
             textBoxPage.EnterEmail(validEmail);
             textBoxPage.ClickSubmitButton();
             Assert.AreEqual($"Email:{validEmail}", textBoxPage.GetEmailResultText());
-            wait.Until(_ => textBoxPage.EmailBorderColor() != redColorBorder);
+            Driver.GetWebDriverWait().Until(_ => textBoxPage.EmailBorderColor() != redColorBorder);
             Assert.AreNotEqual(redColorBorder, textBoxPage.EmailBorderColor());
         }
     }

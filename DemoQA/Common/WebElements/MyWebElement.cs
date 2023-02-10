@@ -9,8 +9,8 @@ namespace DemoQA.Common.WebElements
 {
     public class MyWebElement : IWebElement
     {
-        public WebDriverWait? wait;
         protected By By { get; set; }
+        public By Selector { get; set; }
         protected IWebElement WebElement => WebDriverFactory.Driver.GetWebElementWhenExist(By);
         public string TagName => WebElement.TagName;
         public string Text => WebElement.Text;
@@ -23,6 +23,7 @@ namespace DemoQA.Common.WebElements
         public MyWebElement(By by)
         {
             By = by;
+            Selector = by;
         }
 
         public void Clear() => WebElement.Clear();
@@ -30,7 +31,10 @@ namespace DemoQA.Common.WebElements
         public void Click()
         {
             WebDriverFactory.Driver
-                .GetWebDriverWait(30, TimeSpan.FromMilliseconds(500), typeof(ElementClickInterceptedException), typeof(NoSuchElementException), typeof(ElementNotInteractableException))
+                .GetWebDriverWait(30, TimeSpan.FromMilliseconds(500), 
+                typeof(ElementClickInterceptedException), 
+                typeof(NoSuchElementException), 
+                typeof(ElementNotInteractableException))
                 .Until(_ =>
                 {
                     WebElement.Click();
@@ -46,6 +50,20 @@ namespace DemoQA.Common.WebElements
         public void HoverOverElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Pause(TimeSpan.FromMilliseconds(100)).Perform();
 
         public void MoveToElement() => WebDriverFactory.Actions.MoveToElement(WebElement).Perform();
+
+        public void MoveByOffset(int x, int y) => WebDriverFactory.Actions.MoveByOffset(x, y).Perform();
+
+        public void DragToElement(MyWebElement element) => WebDriverFactory.Actions.ClickAndHold(WebElement)
+            .MoveToElement(element.WebElement).Perform();
+
+        public void DragToElementByOffset(MyWebElement element, int x, int y) => WebDriverFactory.Actions.ClickAndHold(WebElement)
+            .MoveToElement(element.WebElement).MoveByOffset(x, y).Perform();
+
+        public void ReleaseElement() => WebDriverFactory.Actions.Release().Perform();
+
+        public void DragAndDropToElement(MyWebElement target) => WebDriverFactory.Actions.DragAndDrop(WebElement, target.WebElement).Perform();
+
+        public void DragAndDropToOffset(int x, int y) => WebDriverFactory.Actions.DragAndDropToOffset(WebElement, x, y).Perform();
 
         public bool IsDisplayed()
         {

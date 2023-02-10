@@ -1,9 +1,9 @@
-﻿using DemoQA.PageObjects.Widgets;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.Widgets;
 
 namespace DemoQA.Tests.Widgets
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class MenuTests : BaseTest
     {
         [Test]

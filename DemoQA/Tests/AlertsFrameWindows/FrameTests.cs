@@ -1,5 +1,5 @@
-﻿using DemoQA.PageObjects.AlertsFrameWindows;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using DemoQA.PageObjects.AlertsFrameWindows;
 
 namespace DemoQA.Tests.AlertsFrameWindows
 {
@@ -14,10 +14,9 @@ namespace DemoQA.Tests.AlertsFrameWindows
             page.ExpandCategory("Alerts, Frame & Windows");
             page.NavigateToSubcategory("Frames");
             Assert.True(page.InitialState());
-            page.SwitchToFirstFrame();
+            page.SwitchToFrame();
             Assert.AreEqual("This is a sample page", page.GetHeadingInFrame());
-            page.SwitchToParent();
-            page.SwitchToSecondFrame();
+            page.SwitchToFrame("iframe#frame2");
             Assert.AreEqual("This is a sample page", page.GetHeadingInFrame());
         }
     }

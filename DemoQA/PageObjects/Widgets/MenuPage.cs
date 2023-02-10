@@ -1,30 +1,27 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Widgets
 {
     public class MenuPage : WidgetsPage
     {
-        private MyWebElement _menuItem1 = new(By.XPath("//*[@class='nav-menu-container']/ul/li[1]"));
-        private MyWebElement _menuItem2 = new(By.XPath("//*[@class='nav-menu-container']/ul/li[2]"));
-        private MyWebElement _menuItem3 = new(By.XPath("//*[@class='nav-menu-container']/ul/li[3]"));
+        private const string MenuContainerLocator = "//*[@class='nav-menu-container']";
+        private MyWebElement MenuItem1 => new(By.XPath($"{MenuContainerLocator}//a[text()='Main Item 1']"));
+        private MyWebElement SubElement => new(By.XPath($"{MenuItem2.Selector.GetLocator()}/following::a[text()='SUB SUB LIST »']"));
+        private MyWebElement MenuItem2 => new(By.XPath($"{MenuContainerLocator}//a[text()='Main Item 2']"));
+        private MyWebElement MenuItem3 => new(By.XPath($"{MenuContainerLocator}//a[text()='Main Item 3']"));
 
-        public bool InitialState() => _menuItem1.IsDisplayed() && _menuItem2.IsDisplayed() && _menuItem3.IsDisplayed();
+        public bool InitialState() => MenuItem1.IsDisplayed() && MenuItem2.IsDisplayed() && MenuItem3.IsDisplayed();
 
-        public void HoverItem2() => _menuItem2.MoveToElement();
+        public void HoverItem2() => MenuItem2.MoveToElement();
 
-        public void HoverSubSubItem()
-        {
-            var element = new MyWebElement(By.XPath("//*[@class='nav-menu-container']/ul/li[2]/ul/li[3]"));
-
-            element.MoveToElement();
-        }
+        public void HoverSubSubItem() => SubElement.MoveToElement();
 
         public bool AreItem2ItemsDisplayed()
         {
-            var elements = WebDriverFactory.Driver.FindElements(By.XPath("//*[@class='nav-menu-container']/ul/li[2]/ul/li/a"));
+            var elements = WebDriverFactory.Driver.FindElements(By.XPath($"{MenuItem2.Selector.GetLocator()}/following-sibling::*/li/a"));
             var result = false;
 
             if (elements.Count == 3)
@@ -39,7 +36,7 @@ namespace DemoQA.PageObjects.Widgets
 
         public bool AreSubSubListItemsDisplayed()
         {
-            var elements = WebDriverFactory.Driver.FindElements(By.XPath("//*[@class='nav-menu-container']/ul/li[2]/ul/li[3]/ul/li/a"));
+            var elements = WebDriverFactory.Driver.FindElements(By.XPath($"{SubElement.Selector.GetLocator()}/following-sibling::*/li/a"));
             var result = false;
 
             if (elements.Count == 2)

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using DemoQA.PageObjects.Elements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.Tests.Elements
 {
@@ -25,10 +26,10 @@ namespace DemoQA.Tests.Elements
             tablesPage.NavigateToSubcategory("Web Tables");
             Assert.True(tablesPage.PageInitialState());
             tablesPage.ClickAddButton();
-            wait.Until(_ => tablesPage.IsRegistrationHeaderDisplayed());
+            Driver.GetWebDriverWait().Until(_ => tablesPage.IsRegistrationHeaderDisplayed());
             Assert.True(tablesPage.RegistrationFormInitialState());
             tablesPage.ClickSubmitButton();
-            wait.Until(_ => tablesPage.FirstNameBorderColor() == redColor);
+            Driver.GetWebDriverWait().Until(_ => tablesPage.FirstNameBorderColor() == redColor);
             Assert.AreEqual(redColor, tablesPage.FirstNameBorderColor());
             Assert.AreEqual(redColor, tablesPage.LastNameBorderColor());
             Assert.AreEqual(redColor, tablesPage.EmailBorderColor());
@@ -45,7 +46,7 @@ namespace DemoQA.Tests.Elements
             tablesPage.EnterSalary(salary);
             tablesPage.EnterDepartment(department);
             tablesPage.ClickSubmitButton();
-            wait.Until(_ => tablesPage.DepartmentBorderColor() == greenColor);
+            Driver.GetWebDriverWait().Until(_ => tablesPage.DepartmentBorderColor() == greenColor);
             Assert.AreEqual(greenColor, tablesPage.FirstNameBorderColor());
             Assert.AreEqual(greenColor, tablesPage.LastNameBorderColor());
             Assert.AreEqual(redColor, tablesPage.EmailBorderColor());
@@ -54,7 +55,7 @@ namespace DemoQA.Tests.Elements
             Assert.AreEqual(greenColor, tablesPage.DepartmentBorderColor());
             tablesPage.EnterEmail(validEmail);
             tablesPage.EnterAge(invalidAge);
-            wait.Until(_ => tablesPage.AgeBorderColor() == redColor);
+            Driver.GetWebDriverWait().Until(_ => tablesPage.AgeBorderColor() == redColor);
             Assert.AreEqual(greenColor, tablesPage.FirstNameBorderColor());
             Assert.AreEqual(greenColor, tablesPage.LastNameBorderColor());
             Assert.AreEqual(greenColor, tablesPage.EmailBorderColor());

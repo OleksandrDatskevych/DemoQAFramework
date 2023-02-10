@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.Elements
 {
@@ -13,7 +14,7 @@ namespace DemoQA.PageObjects.Elements
 
         public bool AfterFiveSecState()
         {
-            wait.Until(_ => _enableAfterButton.Enabled && _visibleAfter.IsDisplayed());
+            Driver.GetWebDriverWait().Until(_ => _enableAfterButton.Enabled && _visibleAfter.IsDisplayed());
             var result = _enableAfterButton.Enabled && _visibleAfter.IsDisplayed();
 
             return result;

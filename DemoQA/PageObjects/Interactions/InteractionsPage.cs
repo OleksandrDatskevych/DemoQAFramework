@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using DemoQA.Common.WebElements;
 
-namespace DemoQA.PageObjects.Widgets
+namespace DemoQA.PageObjects.Interactions
 {
-    public class WidgetsPage : BasePage
+    public class InteractionsPage : BasePage
     {
         public void NavigateToSubcategory(string subcategoryName)
         {

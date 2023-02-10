@@ -1,7 +1,7 @@
-﻿using DemoQA.Common.Drivers;
+﻿using OpenQA.Selenium;
+using DemoQA.Common.Drivers;
 using DemoQA.Common.WebElements;
-using OpenQA.Selenium;
-using static System.Net.Mime.MediaTypeNames;
+using DemoQA.Common.Extensions;
 
 namespace DemoQA.PageObjects.AlertsFrameWindows
 {
@@ -13,7 +13,7 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
         private MyWebElement _promptButton = new(By.Id("promtButton"));
         private MyWebElement _confirmResult = new(By.Id("confirmResult"));
         private MyWebElement _promptResult = new(By.Id("promptResult"));
-        private IAlert _alert;
+        private IAlert? _alert;
 
         public void ClickAlertButton() => _alertButton.Click();
 
@@ -43,28 +43,28 @@ namespace DemoQA.PageObjects.AlertsFrameWindows
 
         public void AcceptAlert()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.Accept();
         }
 
         public void CancelAlert()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.Dismiss();
         }
 
         public void SendKeysToAlert(string text)
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
             _alert.SendKeys(text);
         }
 
         public string GetAlertText()
         {
-            wait.Until(_ => IsAlertPresent());
+            Driver.GetWebDriverWait().Until(_ => IsAlertPresent());
             _alert = WebDriverFactory.Driver.SwitchTo().Alert();
 
             return _alert.Text;

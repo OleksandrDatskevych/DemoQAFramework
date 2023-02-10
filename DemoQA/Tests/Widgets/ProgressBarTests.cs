@@ -3,7 +3,7 @@ using DemoQA.PageObjects.Widgets;
 
 namespace DemoQA.Tests.Widgets
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class ProgressBarTests : BaseTest
     {
         [Test]
@@ -17,7 +17,7 @@ namespace DemoQA.Tests.Widgets
             page.ClickStartStopButton();
             Assert.True(page.IsStopButtonDisplayed());
             Assert.False(page.IsStartButtonDisplayed());
-            page.WaitUntilProgressBarValue(31);
+            page.WaitUntilProgressBarValue(31); // sometimes stops at 32 ???
             page.ClickStartStopButton();
             Assert.False(page.IsStopButtonDisplayed());
             Assert.True(page.IsStartButtonDisplayed());
